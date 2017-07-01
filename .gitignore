@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+# IDE files
+.idea
+
+# Credentials
+config/mongo-credentials.js
+
