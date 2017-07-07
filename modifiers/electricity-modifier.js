@@ -8,7 +8,7 @@ class ElectricityModifier extends Modifier {
     }
 
     static add(modifier) {
-        modifiers.add(modifier);
+        modifiers.push(modifier);
     }
 }
 
