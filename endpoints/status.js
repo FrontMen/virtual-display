@@ -4,6 +4,6 @@ function getStatus(req,res){
 
 
 module.exports = {
-    url: "/status",
+    url: /^\/status$/,
     get: getStatus
 };
