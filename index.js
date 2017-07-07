@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const Handlebars = require("handlebars");
 const Refrigerator = require("./modifiers/electricity/refrigerator");
 const Toon = require("./models/toon");
-const indexPage = Handlebars.compile(fs.readFileSync("./templates/index.hbs", "utf-8"));
+const createPage = Handlebars.compile(fs.readFileSync("./templates/toon/create.hbs", "utf-8"));
+const toonPage = Handlebars.compile(fs.readFileSync("./templates/toon/index.hbs", "utf-8"));
 const status = require("./endpoints/status");
 const gasConsumption = require("./endpoints/gas-consumption-data");
 
@@ -14,18 +15,50 @@ app.use(express.static('public'));
 app.get(status.url, status.get);
 app.get(gasConsumption.url, gasConsumption.get);
 
-let toon = null;
+let toons = [];
+let i = 0;
 // ROOT PAGE
 app.get("/", function(req,res){
-    res.send(indexPage({toon: toon}));
+    res.send(createPage());
+});
+
+
+app.get("/toon/:agreementId", (req,res) => {
+    let instance = getToonById(req.params.agreementId);
+
+    if(instance){
+        res.send(toonPage({
+            toon: instance,
+            modifiers: instance.getModifiers()
+        }));
+    } else {
+        res.status(404).send({ message: "No toon found with given agreement ID."});
+    }
+});
+app.post("/toon/:agreementId", (req,res) => {
+    let instance = getToonById(req.params.agreementId);
+    console.log(req.body);
+
+    let modifiers = instance.getModifiers();
+    modifiers.forEach((modifier) => {
+        modifier.enabled = Object.keys(req.body).indexOf(modifier.name) > -1;
+    });
+
+    instance.updateModifiers(modifiers);
+    res.redirect("/toon/" + instance.agreementId);
 });
 
 // CREATE VIRTUAL INSTANCE
 app.post("/create", function(req,res){
-    toon = new Toon();
-    res.redirect("/");
+    let toon = new Toon(i++);
+    toons.push(toon);
+    res.redirect("/toon/" + toon.agreementId);
 });
 
 app.listen(3000, () => {
     console.log("App listening on port 3000.");
 });
+
+function getToonById(id){
+    return toons.find((toon) => toon.agreementId === parseInt(id, 10));
+}

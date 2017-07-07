@@ -1,5 +1,9 @@
-const ElectricityModifier = require("../modifiers/electricity-modifier")
-const GasModifier = require("../modifiers/gas-modifier")
+require("../modifiers/electricity/refrigerator");
+require("../modifiers/electricity/washing-machine");
+require("../modifiers/gas/house-size");
+require("../modifiers/gas/season");
+const ElectricityModifier = require("../modifiers/electricity-modifier");
+const GasModifier = require("../modifiers/gas-modifier");
 
 class Toon {
     constructor(agreementId) {
