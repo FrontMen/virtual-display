@@ -1,4 +1,5 @@
 const fs = require("fs");
+const toonService = require("./services/Toon");
 const express = require("express");
 const bodyParser = require('body-parser');
 const Handlebars = require("handlebars");
@@ -15,7 +16,6 @@ app.use(express.static('public'));
 app.get(status.url, status.get);
 app.get(gasConsumption.url, gasConsumption.get);
 
-let toons = [];
 let i = 0;
 // ROOT PAGE
 app.get("/", function(req,res){
@@ -24,8 +24,7 @@ app.get("/", function(req,res){
 
 
 app.get("/toon/:agreementId", (req,res) => {
-    let instance = getToonById(req.params.agreementId);
-
+    let instance = toonService.get(req.params.agreementId);
     if(instance){
         res.send(toonPage({
             toon: instance,
@@ -36,9 +35,7 @@ app.get("/toon/:agreementId", (req,res) => {
     }
 });
 app.post("/toon/:agreementId", (req,res) => {
-    let instance = getToonById(req.params.agreementId);
-    console.log(req.body);
-
+    let instance = toonService.get(req.params.agreementId);
     let modifiers = instance.getModifiers();
     modifiers.forEach((modifier) => {
         modifier.enabled = Object.keys(req.body).indexOf(modifier.name) > -1;
@@ -50,8 +47,9 @@ app.post("/toon/:agreementId", (req,res) => {
 
 // CREATE VIRTUAL INSTANCE
 app.post("/create", function(req,res){
+
     let toon = new Toon(i++);
-    toons.push(toon);
+    toonService.add(toon);
     res.redirect("/toon/" + toon.agreementId);
 });
 
@@ -59,6 +57,3 @@ app.listen(3000, () => {
     console.log("App listening on port 3000.");
 });
 
-function getToonById(id){
-    return toons.find((toon) => toon.agreementId === parseInt(id, 10));
-}

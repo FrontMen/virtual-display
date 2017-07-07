@@ -1,6 +1,6 @@
 const Modifier = require("../electricity-modifier");
 
-const options = [{ name: "Efficient", value: "1200"}, { name: "Inefficient", value: "2000"}];
+const options = [{ name: "Efficient", value: 1200}, { name: "Inefficient", value: 2000}];
 
 class WashingMachine extends Modifier {
 

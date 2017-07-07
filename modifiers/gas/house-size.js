@@ -1,6 +1,6 @@
 const Modifier = require("../gas-modifier");
 
-const options = [{name: "Small", value: -100}, {name: "Medium", value: 100}, {name: "Large", value: 100}];
+const options = [{name: "Small", value: 0}, {name: "Medium", value: 100}, {name: "Large", value: 200}];
 
 class HouseSize extends Modifier {
 
