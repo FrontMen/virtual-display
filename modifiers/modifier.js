@@ -5,7 +5,7 @@ class Modifier {
     }
 
     get currentValue() {
-        return this.enabled ? this.currentOption && this.currentOption.value || this.value : 0;
+        return this.enabled ? this.currentOption && this.currentOption.value: 0;
     }
 
     selectOption(option) {

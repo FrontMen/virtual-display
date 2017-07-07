@@ -22,6 +22,14 @@ class Toon {
             }
         });
     }
+
+    get currentPowerUsage() {
+        return this.electricityModifiers.reduce((acc, m) => acc + m.currentValue, 0);
+    }
+
+    get currentGasConsumption() {
+        return this.gasModifiers.reduce((acc, m) => acc + m.currentValue, 0);
+    }
 }
 
 module.exports = Toon;
