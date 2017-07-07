@@ -1,7 +1,7 @@
 const toonService = require("../services/Toon");
 
 function getStatus(req, res) {
-    let toon = toonService.get(req.params.agreementId);
+    let toon = toonService.get(0);
     res.send(200, {
         powerUsage: toon.currentPowerUsage,
         gasUsage: toon.currentGasConsumption,
@@ -19,7 +19,7 @@ function getStatus(req, res) {
 
 
 module.exports = {
-    url: "/:agreementId/status/",
+    url: "/status/",
     get: getStatus
 };
 

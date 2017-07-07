@@ -18,6 +18,6 @@ function updateDevices(req,res){
 
 
 module.exports = {
-    url: "/:agreementId/devices/",
+    url: "/devices/",
     put: updateDevices
 };

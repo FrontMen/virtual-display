@@ -16,6 +16,6 @@ function getDevices(req, res) {
 
 
 module.exports = {
-    url: "/:agreementId/devices/",
+    url: "/devices/",
     get: getDevices
 };
