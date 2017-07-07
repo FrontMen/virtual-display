@@ -1,21 +1,25 @@
 const toonService = require("../services/Toon");
 
-function getStatus(req,res){
-    //let toon = toonService.get(req.params.agreementId);
-    let toon = toonService.get(0);
+function getStatus(req, res) {
+    let toon = toonService.get(req.params.agreementId);
     res.send(200, {
-        powerUsage: {
-            value: toon.currentPowerUsage
-        },
-        gasUsage: {
-            dayUsage: toon.currentGasConsumption
+        powerUsage: toon.currentPowerUsage,
+        gasUsage: toon.currentGasConsumption,
+        deviceStatusInfo: {
+            device: toon.electricityModifiers.map(({name, currentValue, enabled, uuid}) => ({
+                name,
+                currentState: enabled ? 1 : 0,
+                currentUsage: currentValue,
+                devUUID: uuid,
+                isConnected: true
+            }))
         }
     });
 }
 
 
 module.exports = {
-    url: "/status/",
+    url: "/:agreementId/status/",
     get: getStatus
 };
 

@@ -1,9 +1,15 @@
 const toonService = require("../services/Toon");
 
-function getDevices(req,res){
-    let toon = toonService.get(req.params.agreementId);
+function getDevices(req, res) {
+    let toon = toonService.get(0);
 
-    const devices = toon.electricityModifiers.map(({name, uuid}) => ({name, uuid, usageCapable: true, currentState: 1}));
+    const devices = toon.electricityModifiers.map(({name, uuid, currentValue, enabled}) => ({
+        name,
+        uuid,
+        usageCapable: true,
+        currentUsage: currentValue,
+        currentState: enabled ? 1 : 0
+    }));
 
     res.send(200, devices);
 }
