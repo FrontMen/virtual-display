@@ -11,3 +11,5 @@ class Refrigerator extends Modifier {
         return options;
     }
 }
+
+module.exports = Refrigerator;
