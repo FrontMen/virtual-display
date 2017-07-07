@@ -8,3 +8,5 @@ class Toon {
         this.electricityModifiers = ElectricityModifier.modifiers.map(Modifier => new Modifier());
     }
 }
+
+module.exports = Toon;
