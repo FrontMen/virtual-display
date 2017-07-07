@@ -1,5 +1,6 @@
 class Modifier {
     constructor() {
+        this.uuid = new Date().getTime();
         this.enabled = false;
         this.selectRandomOption();
     }
