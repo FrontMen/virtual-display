@@ -13,3 +13,6 @@ class ElectricityModifier extends Modifier {
 }
 
 module.exports = ElectricityModifier;
+
+ElectricityModifier.add(require("./electricity/refrigerator"));
+ElectricityModifier.add(require("./electricity/washing-machine"));

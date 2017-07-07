@@ -18,4 +18,3 @@ class Season extends Modifier {
 }
 
 module.exports = Season;
-Modifier.add(Season);

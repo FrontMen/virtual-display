@@ -13,3 +13,6 @@ class GasModifier extends Modifier {
 }
 
 module.exports = GasModifier;
+
+GasModifier.add(require("./gas/house-size"));
+GasModifier.add(require("./gas/season"));
