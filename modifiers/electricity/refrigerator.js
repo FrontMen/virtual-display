@@ -17,4 +17,5 @@ class Refrigerator extends Modifier {
     }
 }
 
+Modifier.add(Refrigerator);
 module.exports = Refrigerator;

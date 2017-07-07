@@ -1,6 +1,4 @@
 const Modifier = require("./modifier");
-const HouseSize = require("./gas/house-size");
-const Season = require("./gas/house-size");
 
 const modifiers = [];
 
@@ -15,6 +13,3 @@ class GasModifier extends Modifier {
 }
 
 module.exports = GasModifier;
-
-GasModifier.add(HouseSize);
-GasModifier.add(Season);

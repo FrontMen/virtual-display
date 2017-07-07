@@ -17,4 +17,5 @@ class HouseSize extends Modifier {
     }
 }
 
+Modifier.add(HouseSize);
 module.exports = HouseSize;

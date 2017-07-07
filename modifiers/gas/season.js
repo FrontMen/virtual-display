@@ -17,4 +17,5 @@ class Season extends Modifier {
     }
 }
 
+Modifier.add(Season);
 module.exports = Season;

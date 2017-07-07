@@ -2,7 +2,7 @@ const Modifier = require("../electricity-modifier");
 
 const options = [{ name: "Efficient", value: "1200"}, { name: "Inefficient", value: "2000"}];
 
-class Refrigerator extends Modifier {
+class WashingMachine extends Modifier {
 
     get options() {
         return options;
@@ -17,4 +17,5 @@ class Refrigerator extends Modifier {
     }
 }
 
-module.exports = Refrigerator;
+Modifier.add(WashingMachine);
+module.exports = WashingMachine;
