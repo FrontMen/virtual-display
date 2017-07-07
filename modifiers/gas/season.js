@@ -1,4 +1,4 @@
-const Modifier = require("../modifier");
+const Modifier = require("../gas-modifier");
 
 const options = [{name: "Winter", value: 1000}, {name: "Spring", value: 600}, {name: "Summer", value: 0}, {name: "Autumn", value: 650}];
 
@@ -11,3 +11,6 @@ class Season extends Modifier {
         return options;
     }
 }
+
+module.exports = Season;
+Modifier.add(Season);

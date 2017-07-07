@@ -7,7 +7,7 @@ class Modifier {
         this.selectRandomOption();
     }
 
-    getCurrentValue() {
+    get currentValue() {
         return this.enabled ? this.currentOption && this.currentOption.value || this.value : 0;
     }
 

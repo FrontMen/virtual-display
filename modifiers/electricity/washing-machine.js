@@ -1,4 +1,4 @@
-const Modifier = require("../modifier");
+const Modifier = require("../electricity-modifier");
 
 const options = [{ name: "Efficient", value: "1200"}, { name: "Inefficient", value: "2000"}];
 
@@ -11,3 +11,6 @@ class Refrigerator extends Modifier {
         return options;
     }
 }
+
+module.exports = Refrigerator;
+Modifier.add(Refrigerator);

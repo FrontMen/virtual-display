@@ -1,8 +1,8 @@
-const Modifier = require("../modifier");
+const Modifier = require("../gas-modifier");
 
 const options = [{name: "Small", value: -100}, {name: "Medium", value: 100}, {name: "Large", value: 100}];
 
-class Season extends Modifier {
+class HouseSize extends Modifier {
     constructor() {
         super("House size");
     }
@@ -11,3 +11,6 @@ class Season extends Modifier {
         return options;
     }
 }
+
+module.exports = HouseSize;
+Modifier.add(HouseSize);
