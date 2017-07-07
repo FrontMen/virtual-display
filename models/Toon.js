@@ -19,6 +19,10 @@ class Toon {
 
             if (modifier) {
                 modifier.enabled = m.enabled;
+
+                if (m.selectedOption) {
+                    modifier.selectedOption = m.selectedOption;
+                }
             }
         });
     }
