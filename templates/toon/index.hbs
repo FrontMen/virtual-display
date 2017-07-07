@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configure your Toon</title>
+</head>
+<body>
+<h1>Configure your TOON</h1>
+
+<ul>
+    <form name="config" action="/toon/{{toon.agreementId}}" method="post">
+    {{#each modifiers}}
+        <li>
+            <label>
+                <input type="checkbox" name="{{this.name}}" {{#if this.enabled}}checked="checked"{{/if}} value="{{this.value}}">
+                {{this.name}}
+            </label>
+        </li>
+    {{/each}}
+    <button type="submit">SAVE</button>
+    </form>
+</ul>
+<script src="main.js"></script>
+</body>
+</html>
