@@ -17,9 +17,18 @@
     <form id="createToon" name="createToon" action="/create" method="post">
         <fieldset>
             <legend>Devices</legend>
-            <label>
-                <input id="fridge" type="checkbox" value="fridge" /> Refrigurator
-            </label>
+            <ul>
+                <li>
+                    <label>
+                        <input name="devices" type="checkbox" value="fridge" /> Refrigurator
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input name="devices" type="checkbox" value="lamp" /> Lamp
+                    </label>
+                </li>
+            </ul>
         </fieldset>
         <button type="submit">Create a virtual TOON</button>
     </form>

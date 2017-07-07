@@ -6,7 +6,6 @@ const indexPage = Handlebars.compile(fs.readFileSync("./templates/index.hbs", "u
 const status = require("./endpoints/status");
 const gasConsumption = require("./endpoints/gas-consumption-data");
 
-
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -22,9 +21,19 @@ app.get("/", function(req,res){
 // CREATE VIRTUAL INSTANCE
 app.post("/create", function(req,res){
     console.log("CREATING A VIRTUAL INSTANCE");
-    toon = {
-        "devices": [{name:"YOLO"}]
-    };
+    if(req.body){
+        toon = {};
+
+        if (req.body.devices){
+            if (req.body.devices.map){
+            toon.devices = req.body.devices.map((device) => {return { name: device }});
+            } else {
+                toon.devices = [];
+                toon.devices.push({name: req.body.devices });
+            }
+        }
+    }
+
     res.redirect("/");
 });
 
