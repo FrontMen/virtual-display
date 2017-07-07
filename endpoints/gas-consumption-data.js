@@ -1,6 +1,19 @@
+//const modifier = require("./modifiers/gas");
+
 function getGasConsumption(req,res){
+    let response = {
+        hours: [],
+        days: [],
+        weeks: [],
+        months: [],
+        years: []
+    };
+
     console.log(req.query);
-    res.send(200, { foo: "bar"});
+    //modifier
+    // MAGIC FORMULA
+    // EATS MODIFIERS
+    res.send(200, response);
 }
 
 ///consumption/gas/data?interval=hours&fromTime=1420070400000&toTime=1451606400000
