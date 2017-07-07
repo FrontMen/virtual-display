@@ -1,11 +1,10 @@
 const express = require("express");
+const status = require("./endpoints/status");
 
 const app = express();
 
 
-app.get("/status", (req, res) => {
-    res.send("Status call");
-});
+app.get(status.url, status.get);
 
 
 app.listen(3000, () => {
