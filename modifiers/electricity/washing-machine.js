@@ -2,7 +2,7 @@ const Modifier = require("../modifier");
 
 const options = [{ name: "Efficient", value: "1200"}, { name: "Inefficient", value: "2000"}];
 
-class Refrigerator extends Modifier {
+class WashingMachine extends Modifier {
     constructor() {
         super("Washing machine");
     }
@@ -11,3 +11,5 @@ class Refrigerator extends Modifier {
         return options;
     }
 }
+
+module.exports = WashingMachine;

@@ -2,6 +2,8 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require('body-parser');
 const Handlebars = require("handlebars");
+const Refrigerator = require("./modifiers/electricity/refrigerator");
+const Toon = require("./models/toon");
 const indexPage = Handlebars.compile(fs.readFileSync("./templates/index.hbs", "utf-8"));
 const status = require("./endpoints/status");
 const gasConsumption = require("./endpoints/gas-consumption-data");
@@ -20,20 +22,7 @@ app.get("/", function(req,res){
 
 // CREATE VIRTUAL INSTANCE
 app.post("/create", function(req,res){
-    console.log("CREATING A VIRTUAL INSTANCE");
-    if(req.body){
-        toon = {};
-
-        if (req.body.devices){
-            if (req.body.devices.map){
-            toon.devices = req.body.devices.map((device) => {return { name: device }});
-            } else {
-                toon.devices = [];
-                toon.devices.push({name: req.body.devices });
-            }
-        }
-    }
-
+    toon = new Toon();
     res.redirect("/");
 });
 

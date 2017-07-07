@@ -8,28 +8,9 @@
 <body>
 <h1>Configure your TOON</h1>
 {{#if toon}}
-    <ul>
-        {{#each toon.devices}}
-            <li>{{this.name}}</li>
-        {{/each}}
-    </ul>
+    HAS A TOON
 {{else}}
     <form id="createToon" name="createToon" action="/create" method="post">
-        <fieldset>
-            <legend>Devices</legend>
-            <ul>
-                <li>
-                    <label>
-                        <input name="devices" type="checkbox" value="fridge" /> Refrigurator
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input name="devices" type="checkbox" value="lamp" /> Lamp
-                    </label>
-                </li>
-            </ul>
-        </fieldset>
         <button type="submit">Create a virtual TOON</button>
     </form>
 {{/if}}

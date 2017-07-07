@@ -1,5 +1,12 @@
+
+
 function getStatus(req,res){
-    res.send(200, { foo: "bar"});
+
+    res.send(200, {
+        powerUsage: {
+            value: 0
+        }
+    });
 }
 
 
