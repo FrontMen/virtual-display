@@ -1,9 +1,6 @@
 class Modifier {
-    constructor(name) {
+    constructor() {
         this.enabled = false;
-        this.name = name;
-        this.value = 0;
-        this.currentOption = null;
         this.selectRandomOption();
     }
 
